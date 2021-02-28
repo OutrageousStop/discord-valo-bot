@@ -67,15 +67,8 @@ module.exports = class ValoCommand extends BaseCommand {
     }
   }
 
-  scheduleClear() {
-    const job = schedule.scheduleJob('clear', '0 0 * * *', () => {
-      fs.writeFileSync('valo.txt', '[]')
-    })
-  }
-
   run(client, message, args) {
-    this.scheduleClear();
-    var time = args[0];
+    var time = args[0].trim().toLowerCase();
     var response = ``;
     try {
       if (time == 'cancel') {
