@@ -11,7 +11,7 @@ module.exports = class ValotodayCommand extends BaseCommand {
   sendMessage(response, message, color='#24f00a') {
     const playersEmbed = new Discord.MessageEmbed()
      .setTitle(`Players today`)
-     .setDescription(`${response}`)
+     .setDescription(response)
      .setColor(color);
     message.channel.send(playersEmbed);
   }
@@ -29,7 +29,7 @@ module.exports = class ValotodayCommand extends BaseCommand {
       return this.sendMessage(response, message, '#ff0000');
     }
     players.forEach((player) => {
-      response += `<@${player.id}>\t${player.time}\n`;
+      response += `${player.username}\t${player.time}\n`;
     })
     this.sendMessage(response, message);
   }
